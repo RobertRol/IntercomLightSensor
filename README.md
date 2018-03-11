@@ -22,6 +22,6 @@ The reason for using two LDRs instead of one intercom-light LDR together with a 
 Since the sensor will be always "on" in my design, it was important that the resistance of the LDRs is rather high so that the current through them is small. Actually, it would be rather easy to change my design to also support LDRs with lower resistance but it turned out that this is not really necessary.
 I used two 12mm GL12537 LDRs, which have about 40kOhm/4kOhm in dark/bright state, respectively. Additionally, I have added another 0-10kOhm potentiometer to be able to adjust for any differences in resistance levels between the two LDRs. But it turned that this is not necessary.
 
-[[https://github.com/RobertRol/IntercomLightSensor/blob/master/Sensor.svg]]
+![Sensor schematic](https://github.com/RobertRol/IntercomLightSensor/blob/master/Sensor.svg)
 
 ## Transmitter
