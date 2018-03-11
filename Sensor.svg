@@ -74,7 +74,7 @@
         <g fill="#000000" font-family="Arial,Helvetica" font-weight="bold"
            text-anchor="middle" font-size="33.599999999999994px">
             <text x="1423.8" y="589.4">
-                Intercom LDR, 4-40kOhm
+                Intercom LDR, 4-40k
             </text>
         </g>
         <rect x="1705.2" y="809.2" width="5.6" height="5.6" fill="#000000"
@@ -141,7 +141,7 @@
         <g fill="#000000" font-family="Arial,Helvetica" font-weight="bold"
            text-anchor="middle" font-size="33.599999999999994px">
             <text x="1426.6" y="897.4">
-                Ambient LDR, 4-40kOhm
+                Ambient LDR, 4-40k
             </text>
         </g>
         <rect x="1705.2" y="1089.2" width="5.6" height="5.6" fill="#000000"
@@ -200,7 +200,7 @@
         <g fill="#000000" font-family="Arial,Helvetica" font-weight="bold"
            text-anchor="middle" font-size="33.599999999999994px">
             <text x="1580.6" y="1178.8">
-                0-10kOm
+                0-10k
             </text>
         </g>
         <path d="M 1708 700 L 1708 812" fill="none" stroke="#000000"
@@ -376,7 +376,7 @@
         <g fill="#000000" font-family="Arial,Helvetica" font-weight="bold"
            text-anchor="middle" font-size="33.599999999999994px">
             <text x="1813" y="1055.6">
-                0.1µF
+                0.1µ
             </text>
         </g>
         <path d="M 1904 952 L 1904 756 L 1713.6 756" fill="none"
