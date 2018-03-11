@@ -12,6 +12,7 @@ My main take-aways from this website were that I
 1. had to go for a bare Atmel328 board implementation
 2. should use the watchdog timer to periodically wake up the sleeping processor
 3. should go as low as possible with processor frequency and voltage 
+
 I also ran into some dead ends with the wireless data transmission. In the end I got it working with the HC-12 wireless module. Its documentation can be found here https://statics3.seeedstudio.com/assets/file/bazaar/product/HC-12_english_datasheets.pdf
 There are also some tricks about the HC-12 wireless model which I will describe later.
 
