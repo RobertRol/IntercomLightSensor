@@ -2,7 +2,7 @@
 1. Detection of a light signal from an intercom (without the need of opening and/or changing the wiring of the intercom)
 2. Wireless transmission of the signal to another portable device (receiver)
 3. Low power consumption: both sensor-transmitter (implemented in one device) and receiver should run for several months on batteries
-4. Ability to send and receive the signal across thew whole apartment
+4. Ability to send and receive the signal across the whole apartment
 5. I wanted to implement this using Arduino-like hardware
 
 ## Main source
