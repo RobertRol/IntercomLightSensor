@@ -40,7 +40,7 @@ In a nutshell, the sensor-transmitter code performs the following steps:
 
 1. The Atmel328P-PU microcontroller will be woken up from the SLEEP_MODE_PWR_DOWN state via a watchdog timer every 256ms.
 2. It will then take 5 subsequent analog readings of the voltage drop across the ambient LDR. The readings are filtered using an exponentially-weighted moving average in order to reduce noise and to allow for the internal analogRead circuit to adjust to the sensor impedance.
-3. The filtered value is compared to the last stored value. If there is a "significant" change, the HC-12 module is woken up from its sleep mode and a signal is sent to the receiver (repeated 2 times with a delay of 1000ms). Otherwise, the HC-12 stays in sleep mode. The HC-12 module is sent back to sleeping mode, after the signal was transmitted.
+3. The filtered value is compared to the last stored value. If there is a "significant" change, the HC-12 module is woken up from its sleep mode and a signal is sent to the receiver (repeated 2 times with a delay of 1000ms). Otherwise, the HC-12 stays in sleep mode. The HC-12 module is sent back to sleeping mode (22µA idle current), after the signal was transmitted.
 
 The trasmission electronics is depicted in the left-hand-side part of the schematic given below.
 
@@ -49,7 +49,7 @@ The trasmission electronics is depicted in the left-hand-side part of the schema
 ## Receiver
 The receiver module uses another HC-12 module to detect the signals sent from the sensor-transmitter.
 
-1. In order to save energy, the microprocessor of the receiver and the HC-12 module are both put into sleep mode.
-2. The HC-12 module gets woken up by any incoming RF signals and subsequently changes the voltage on one of its pins. This voltage change can be used to wake up the Atmel microprocessor via an hardware interrupt.
+1. In order to save energy, the microprocessor of the receiver is put into SLEEP_MODE_PWR_DOWN and the HC-12 module is put into power saving mode (where it roughly needs 90µA).
+2. Upon incoming RF signals the HC-12 module changes the voltage on its TXD pin. This voltage change can be used to wake up the Atmel microprocessor via an hardware interrupt.
 3. After the Atmel microprocessor is woken up, it flashes a small 3x2 LED array for a few times.
-4. 
+4. Finally, the Atmel328P-PU is put back into SLEEP_MODE_PWR_DOWN mode.
