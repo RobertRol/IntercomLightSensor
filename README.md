@@ -5,9 +5,15 @@
 4. Ability to send and receive the signal across the whole apartment
 5. Implementation via microcontrollers since I wanted to play around with my Arduino board
 
-## Main source
+## Overview
+1. [Main Sources](#main-sources)
+2. [Sensor](#sensor)
+3. [Transmitter](#transmitter)
+4. [Receiver](#receiver)
+
+## Main sources
 The low power objective turned out to be really tricky.
-This website https://www.gammon.com.au/power turned out to be incredibly helpful, especially the part about the low-power temperature monitor.
+The website https://www.gammon.com.au/power turned out to be incredibly helpful, especially the part about the low-power temperature monitor.
 My main take-aways from this website were that
 1. I had to go for a bare Atmel328P-PU board implementation (rather than using an Arduino Nano or similar)
 2. a watchdog timer should be used to periodically wake up the sleeping processor
