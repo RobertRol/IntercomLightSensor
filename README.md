@@ -45,3 +45,11 @@ In a nutshell, the sensor-transmitter code performs the following steps:
 The trasmission electronics is depicted in the left-hand-side part of the schematic given below.
 
 ![Sensor-Transmitter schematic](https://github.com/RobertRol/IntercomLightSensor/blob/master/SensorTransmitter.svg)
+
+## Receiver
+The receiver module uses another HC-12 module to detect the signals sent from the sensor-transmitter.
+
+1. In order to save energy, the microprocessor of the receiver and the HC-12 module are both put into sleep mode.
+2. The HC-12 module gets woken up by any incoming RF signals and subsequently changes the voltage on one of its pins. This voltage change can be used to wake up the Atmel microprocessor via an hardware interrupt.
+3. After the Atmel microprocessor is woken up, it flashes a small 3x2 LED array for a few times.
+4. 
