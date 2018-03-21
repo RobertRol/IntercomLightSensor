@@ -53,3 +53,5 @@ The receiver module uses another HC-12 module to detect the signals sent from th
 2. Upon incoming RF signals the HC-12 module changes the voltage on its TXD pin. This voltage change can be used to wake up the Atmel microprocessor via an hardware interrupt.
 3. After the Atmel microprocessor is woken up, it flashes a small 3x2 LED array for a few times.
 4. Finally, the Atmel328P-PU is put back into SLEEP_MODE_PWR_DOWN mode.
+
+![Receiver schematic](https://github.com/RobertRol/IntercomLightSensor/blob/master/Receiver.svg)
