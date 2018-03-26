@@ -10,6 +10,7 @@
 2. [Sensor](#sensor)
 3. [Transmitter](#transmitter)
 4. [Receiver](#receiver)
+5. [Power Source](#power-source)
 
 ## Links
 The low power objective turned out to be really tricky. However, the website https://www.gammon.com.au/power was incredibly helpful, especially the part about the low-power temperature monitor.
@@ -60,3 +61,6 @@ The receiver module uses another HC-12 module to detect the signals sent from th
 4. Finally, the ATmega328P-PU is put back into SLEEP_MODE_PWR_DOWN mode.
 
 ![Receiver schematic](https://github.com/RobertRol/IntercomLightSensor/blob/master/Receiver.svg)
+
+## Power Source
+I used 3 serially-connected high-capacity AA rechargeable batteries as power source for both the sensor-transmitter and the receiver. This gives a voltage of approx. 3.6V and a capacity of 7500mAh. With the receiver needing roughly 90-200µA in idle mode, this battery pack has more than enough energy to run it for months. The power consumption of the sensor-transmitter is a bit harder to estimate.
