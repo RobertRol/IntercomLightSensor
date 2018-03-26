@@ -30,7 +30,7 @@ The reason for using two LDRs instead of one intercom LDR plus a constant resist
 
 Since the sensor will be always "on" in my design, it was important that the resistance of the LDRs is rather high so that the current through them is small. I used two 12mm GL12537 LDRs, which have about 40kOhm/4kOhm in dark/bright state, respectively. Additionally, I have added another 0-10kOhm potentiometer to be able to adjust for any differences in resistance levels between the two LDRs.
 
-The sensor is depicted in the right-hand-side part of the schematic given below.
+![Sensor schematic](https://github.com/RobertRol/IntercomLightSensor/blob/master/Sensor.svg)
 
 ## Transmitter
 Wireless transmission of the light-triggered signal is performed via an HC-12 tranceiver module. While its range turned out to be much better than for the more cheaper Arduino RF modules, it's still not good enough so that I can completely close the boxes where I have put the sensor-transmitter and receiver electronics.
