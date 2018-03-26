@@ -22,6 +22,8 @@ I also ran into some dead ends with the wireless data transmission. In the end, 
 
 The ATmega328P-PU microprocessors I bought did not have a bootloader installed. I used my Elegoo Uno R3 development board to burn the bootloader onto the ATmegas. A description of the procedure and a simple bread board layout can be found here: https://www.arduino.cc/en/Tutorial/ArduinoToBreadboard
 
+The microprocessor pin layout is given here: https://www.arduino.cc/en/Hacking/PinMapping168
+
 ## Sensor
 The main part of the sensor is a voltage divider composed of two light-dependent resistors (LDRs). One of the LDRs is placed right in front of the intercom light ("intercom LDR"), the other one a bit away from it ("ambient LDR"). The voltage drop across the intercom LDR is then used as an analogRead input to the ATmega328P-PU microcontroller.
 The reason for using two LDRs instead of one intercom LDR plus a constant resistor is that the sensor has to work independent of the ambient light level. By using a second (ambient) LDR, the sensor will always just measure the difference between intercom light and ambient light level.
