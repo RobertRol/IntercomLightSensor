@@ -18,6 +18,8 @@ My main take-aways from this website were that
 2. a watchdog timer should be used to periodically wake up the sleeping processor
 3. I should go as low as possible with processor frequency and voltage 
 
+Descriptions on how to set up a bare microprocessor board can be found on the same web page or on https://www.arduino.cc/en/Main/Standalone.
+
 I also ran into some dead ends with the wireless data transmission. In the end, I got it working with the HC-12 wireless module. Its documentation can be found here: https://statics3.seeedstudio.com/assets/file/bazaar/product/HC-12_english_datasheets.pdf.
 
 The ATmega328P-PU microprocessors I bought did not have a bootloader installed. I used my Elegoo Uno R3 development board to burn the bootloader onto the ATmegas. A description of the procedure and a simple bread board layout can be found here: https://www.arduino.cc/en/Tutorial/ArduinoToBreadboard
