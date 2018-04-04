@@ -35,6 +35,10 @@ Since the sensor will be always "on" in my design, it was important that the res
 
 ![Sensor schematic](https://github.com/RobertRol/IntercomLightSensor/blob/master/Sensor.svg)
 
+Parts list:
+* R1, R2 https://www.alibaba.com/product-detail/GL12537-1-CdS-Photoresistor-GM12537-1_1894530106.html
+* C1 standard 0.1µF ceramic capacitor for noise reduction
+
 ## Transmitter
 Wireless transmission of the light-triggered signal is performed via an HC-12 tranceiver module. While its range turned out to be much better than for the more cheaper Arduino RF modules, it's still not good enough so that I can completely close the boxes where I have put the sensor-transmitter and receiver electronics.
 
