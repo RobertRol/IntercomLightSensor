@@ -43,9 +43,9 @@ Parts list:
 * C1 standard 0.1µF ceramic capacitor for noise reduction
 
 ## Transmitter
-Wireless transmission of the light-triggered signal is performed via an HC-12 tranceiver module. While its range turned out to be much better than for the cheaper Arduino RF modules, it's still not good enough to receive the signal everywhere in my aparatment. However, it works if I leave the boxes with the sensor-transmitter and receiver electronics open.
+Wireless transmission of the light-triggered signal is performed via an HC-12 tranceiver module. While its transmission range turned out to be much better than for the cheaper Arduino RF modules, it's still not good enough to receive the signal everywhere in my apartment. However, it works if I leave the boxes with the sensor-transmitter and receiver electronics open.
 
-Important note about digital pins 0 and 1 of the ATmega328P-PU and the SoftwareSerial library: It seems you cannot use them as RX/TX pins when setting up a SoftwareSerial object, see http://forum.arduino.cc/index.php?topic=412164.0. At least I did not manage to get the RF communication working when I was using pins 0 and 1.
+Important note about digital pins 0 and 1 of the ATmega328P-PU and the SoftwareSerial library: It seems as if you cannot use them as RX/TX pins when setting up a SoftwareSerial object, see http://forum.arduino.cc/index.php?topic=412164.0. At least I did not manage to get the RF communication working when using pins 0 and 1.
 
 Another important note: If the AREF pin is connected to an external voltage source, the source code must include the line
 ```C
@@ -55,13 +55,16 @@ Otherwise, the microcontroller might be damaged!
 
 In a nutshell, the sensor-transmitter code performs the following steps:
 
-1. The ATmega328P-PU microcontroller will be woken up from the SLEEP_MODE_PWR_DOWN state via a watchdog timer every 256ms.
+1. Every 256ms, the ATmega328P-PU microcontroller will be woken up from state `SLEEP_MODE_PWR_DOWN` via a watchdog timer.
 2. It will then take 5 subsequent analog readings of the voltage drop across the ambient LDR. The readings are filtered using an exponentially-weighted moving average in order to reduce noise and to allow for the internal analogRead circuit to adjust to the sensor impedance.
-3. The filtered value is compared to the last stored value. If there is a "significant" change, the HC-12 module is woken up from its sleep mode and a signal is sent to the receiver (repeated 2 times with a delay of 1000ms). Otherwise, the HC-12 stays in sleep mode. The HC-12 module is sent back to sleeping mode (22µA idle current), after the signal was transmitted.
+3. The filtered value is compared to the stored value of the last cycle. If there is a "significant" change, the HC-12 module is woken up from its sleep mode and a signal is sent to the receiver (repeated 2 times with a delay of 2000ms). Otherwise, the HC-12 stays in sleep mode. The HC-12 module is set back to sleeping mode (22µA idle current), after the signal was transmitted.
 
-The trasmission electronics is depicted in the left-hand-side part of the schematic given below.
+The trasmission electronics is depicted in the left-hand-side part of the schematic given below; the sensor is given in the right-hand-side.
 
 ![Sensor-Transmitter schematic](https://github.com/RobertRol/IntercomLightSensor/blob/master/SensorTransmitter.svg)
+
+Parts list:
+
 
 ## Receiver
 The receiver module uses another HC-12 module to detect the signals sent from the sensor-transmitter.
