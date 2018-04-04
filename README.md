@@ -80,7 +80,14 @@ The receiver module uses another HC-12 module to detect the signals sent from th
 3. After the ATmega microprocessor is woken up, it flashes a small 3x2 LED array for a few times.
 4. Finally, the ATmega328P-PU is put back into mode `SLEEP_MODE_PWR_DOWN`.
 
+Like for the sensor-transmitter, pins A4 and A5 can be used to send optional debugging messages via the I2C bus.
+
 ![Receiver schematic](https://github.com/RobertRol/IntercomLightSensor/blob/master/Receiver.svg)
+
+Parts list:
+* basically the same as in section [Transmitter](#transmitter), but with the reset pullup resistor now denoted by R7
+* R1-R6, 220 Ohm resistors
+* L1-L6, red LEDs
 
 ## Power Source
 I used 3 serially-connected high-capacity AA rechargeable batteries as power source for both the sensor-transmitter and the receiver. This gives a voltage of approx. 3.6V and a capacity of 7500mAh. With the receiver drawing roughly 90-200µA in idle mode, this battery pack has more than enough energy to run the receiver for months. The power consumption of the sensor-transmitter is a bit harder to estimate.
