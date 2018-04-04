@@ -75,12 +75,12 @@ Parts list:
 ## Receiver
 The receiver module uses another HC-12 module to detect the signals sent from the sensor-transmitter.
 
-1. In order to save energy, the microprocessor of the receiver is put into SLEEP_MODE_PWR_DOWN and the HC-12 module is put into power saving mode (where it roughly needs 90µA).
-2. Upon incoming RF signals the HC-12 module changes the voltage on its TXD pin. This voltage change can be used to wake up the ATmega microprocessor via an hardware interrupt.
+1. In order to save energy, the microprocessor of the receiver is put into `SLEEP_MODE_PWR_DOWN`. The HC-12 module is also put into power saving mode `AT+FU2`, where it draws about 90µA.
+2. I have noticed that upon incoming RF signals, the HC-12 module changes the voltage on its TXD pin. This voltage change can be used to wake up the ATmega microprocessor via an hardware interrupt.
 3. After the ATmega microprocessor is woken up, it flashes a small 3x2 LED array for a few times.
-4. Finally, the ATmega328P-PU is put back into SLEEP_MODE_PWR_DOWN mode.
+4. Finally, the ATmega328P-PU is put back into mode `SLEEP_MODE_PWR_DOWN`.
 
 ![Receiver schematic](https://github.com/RobertRol/IntercomLightSensor/blob/master/Receiver.svg)
 
 ## Power Source
-I used 3 serially-connected high-capacity AA rechargeable batteries as power source for both the sensor-transmitter and the receiver. This gives a voltage of approx. 3.6V and a capacity of 7500mAh. With the receiver needing roughly 90-200µA in idle mode, this battery pack has more than enough energy to run it for months. The power consumption of the sensor-transmitter is a bit harder to estimate.
+I used 3 serially-connected high-capacity AA rechargeable batteries as power source for both the sensor-transmitter and the receiver. This gives a voltage of approx. 3.6V and a capacity of 7500mAh. With the receiver drawing roughly 90-200µA in idle mode, this battery pack has more than enough energy to run the receiver for months. The power consumption of the sensor-transmitter is a bit harder to estimate.
