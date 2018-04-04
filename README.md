@@ -65,9 +65,7 @@ Pins A4 and A5 can be used to send optional debugging messages via the I2C bus.
 ![Sensor-Transmitter schematic](https://github.com/RobertRol/IntercomLightSensor/blob/master/SensorTransmitter.svg)
 
 Parts list:
-* R1, R2 ... LDRs https://www.alibaba.com/product-detail/GL12537-1-CdS-Photoresistor-GM12537-1_1894530106.html
-* R3 ... 10kOhm variable resistor (actually, it turned out that the two LDR resistances are very similar so that adding a  potentiometer is not necessary)
-* C1 ... 0.1µF ceramic capacitor for noise reduction
+* R1, R2, R3, C1 ... see parts list of [Sensor](#sensor) section above
 * R4 ... 10kOhm pullup resistor
 * C2, C3 ... 22pF ceramic capacitors for crystal oscillator
 * C4, C5 ... 0.1µF ceramic capacitor for noise reduction
