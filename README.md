@@ -55,8 +55,8 @@ Otherwise, the microcontroller might be damaged!
 
 In a nutshell, the sensor-transmitter code performs the following steps:
 
-1. Every 256ms, the ATmega328P-PU microcontroller will be woken up from state `SLEEP_MODE_PWR_DOWN` via a watchdog timer.
-2. It will then take 5 subsequent analog readings of the voltage drop across the ambient LDR. The readings are filtered using an exponentially-weighted moving average in order to reduce noise and to allow for the internal analogRead circuit to adjust to the sensor impedance.
+1. Every 256ms, the ATmega328P-PU microcontroller is woken up from state `SLEEP_MODE_PWR_DOWN` via a watchdog timer.
+2. The microcontroller takes 5 subsequent analog readings of the voltage drop across the ambient LDR. The readings are filtered using an exponentially-weighted moving average in order to reduce noise and to allow for the internal analogRead circuit to adjust to the sensor impedance.
 3. The filtered value is compared to the stored value of the last cycle. If there is a "significant" change, the HC-12 module is woken up from its sleep mode and a signal is sent to the receiver (repeated 2 times with a delay of 2000ms). Otherwise, the HC-12 stays in sleep mode. The HC-12 module is set back to sleeping mode (22µA idle current), after the signal was transmitted.
 
 The trasmission electronics is depicted in the left-hand-side part of the schematic given below; the sensor is given in the right-hand-side.
