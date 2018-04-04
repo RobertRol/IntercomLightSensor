@@ -25,7 +25,9 @@ I also ran into some dead ends with the wireless data transmission. In the end, 
 
 The ATmega328P-PU microprocessors I bought did not have a bootloader installed. I used my Elegoo Uno R3 development board to burn the bootloader onto the ATmegas. A description of the procedure and a simple bread board layout can be found here: https://www.arduino.cc/en/Tutorial/ArduinoToBreadboard
 
-The microprocessor pin layout is given here: https://www.arduino.cc/en/Hacking/PinMapping168
+I was also using my Elegoo Uno R3 development board to upload the sketches to the microprocessors.
+
+The ATmega328P-PU pin layout is given here: https://www.arduino.cc/en/Hacking/PinMapping168
 
 ## Sensor
 The main part of the sensor is a voltage divider composed of two light-dependent resistors (LDRs). One of the LDRs is placed right in front of the intercom light ("intercom LDR"), the other one a bit away from it ("ambient LDR"). The voltage drop across the ambient LDR is then used as an analogRead input to the ATmega328P-PU microcontroller.
@@ -41,11 +43,15 @@ Parts list:
 * C1 standard 0.1µF ceramic capacitor for noise reduction
 
 ## Transmitter
-Wireless transmission of the light-triggered signal is performed via an HC-12 tranceiver module. While its range turned out to be much better than for the more cheaper Arduino RF modules, it's still not good enough so that I can completely close the boxes where I have put the sensor-transmitter and receiver electronics.
+Wireless transmission of the light-triggered signal is performed via an HC-12 tranceiver module. While its range turned out to be much better than for the cheaper Arduino RF modules, it's still not good enough to receive the signal everywhere in my aparatment. However, it works if I leave the boxes with the sensor-transmitter and receiver electronics open.
 
-One important thing that I found out is that one should not use digital pins 0 and 1 of the ATmega328P-PU to connect it to the HC-12 module because these are reserved for the serial interface. Connecting via them would interfere with the SoftwareSerial library that I will be using for the RF communication.
+Important note about digital pins 0 and 1 of the ATmega328P-PU and the SoftwareSerial library: It seems you cannot use them as RX/TX pins when setting up a SoftwareSerial object, see http://forum.arduino.cc/index.php?topic=412164.0. At least I did not manage to get the RF communication working when I was using pins 0 and 1.
 
-Another very important point is that I connected the microcontroller's AREF pin to Vss. If the AREF pin is connected to an external voltage source, the source code must include the analogReference(EXTERNAL) command. Otherwise, the microcontroller might be damaged.
+Another important note: If the AREF pin is connected to an external voltage source, the source code must include the line
+```C
+analogReference(EXTERNAL);
+```
+Otherwise, the microcontroller might be damaged!
 
 In a nutshell, the sensor-transmitter code performs the following steps:
 
