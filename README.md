@@ -37,6 +37,7 @@ Since the sensor will be always "on" in my design, it was important that the res
 
 Parts list:
 * R1, R2 https://www.alibaba.com/product-detail/GL12537-1-CdS-Photoresistor-GM12537-1_1894530106.html
+* R3 standard 10kOhm variable resistor (actually, it turned out that the two LDR resistances are very similar so that adding a  potentiometer is not necessary)
 * C1 standard 0.1µF ceramic capacitor for noise reduction
 
 ## Transmitter
