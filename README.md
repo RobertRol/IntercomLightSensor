@@ -28,10 +28,10 @@ The ATmega328P-PU microprocessors I bought did not have a bootloader installed. 
 The microprocessor pin layout is given here: https://www.arduino.cc/en/Hacking/PinMapping168
 
 ## Sensor
-The main part of the sensor is a voltage divider composed of two light-dependent resistors (LDRs). One of the LDRs is placed right in front of the intercom light ("intercom LDR"), the other one a bit away from it ("ambient LDR"). The voltage drop across the intercom LDR is then used as an analogRead input to the ATmega328P-PU microcontroller.
-The reason for using two LDRs instead of one intercom LDR plus a constant resistor is that the sensor has to work independent of the ambient light level. By using a second (ambient) LDR, the sensor will always just measure the difference between intercom light and ambient light level.
+The main part of the sensor is a voltage divider composed of two light-dependent resistors (LDRs). One of the LDRs is placed right in front of the intercom light ("intercom LDR"), the other one a bit away from it ("ambient LDR"). The voltage drop across the ambient LDR is then used as an analogRead input to the ATmega328P-PU microcontroller.
+The reason for using two LDRs is that the sensor has to work independent of the ambient light level. By using a second (ambient) LDR, the sensor will always just measure the difference between intercom light and ambient light level.
 
-Since the sensor will be always "on" in my design, it was important that the resistance of the LDRs is rather high so that the current through them is small. I used two 12mm GL12537 LDRs, which have about 40kOhm/4kOhm in dark/bright state, respectively. Additionally, I have added another 0-10kOhm potentiometer to be able to adjust for any differences in resistance levels between the two LDRs.
+Since the sensor will always draw current, it was important that the resistance of the LDRs is rather high in order to minimize power drain. I used two 12mm GL12537 LDRs, which have about 40kOhm/4kOhm in dark/bright state, respectively. Additionally, I have added another 0-10kOhm potentiometer to be able to adjust for any differences in resistances between the two LDRs.
 
 ![Sensor schematic](https://github.com/RobertRol/IntercomLightSensor/blob/master/Sensor.svg)
 
