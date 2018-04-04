@@ -60,11 +60,19 @@ In a nutshell, the sensor-transmitter code performs the following steps:
 3. The filtered value is compared to the stored value of the last cycle. If there is a "significant" change, the HC-12 module is woken up from its sleep mode and a signal is sent to the receiver (repeated 2 times with a delay of 2000ms). Otherwise, the HC-12 stays in sleep mode. The HC-12 module is set back to sleeping mode (22µA idle current), after the signal was transmitted.
 
 The trasmission electronics is depicted in the left-hand-side part of the schematic given below; the sensor is given in the right-hand-side.
+Pins A4 and A5 can be used to send optional debugging messages via the I2C bus.
 
 ![Sensor-Transmitter schematic](https://github.com/RobertRol/IntercomLightSensor/blob/master/SensorTransmitter.svg)
 
 Parts list:
-
+* R1, R2 ... LDRs https://www.alibaba.com/product-detail/GL12537-1-CdS-Photoresistor-GM12537-1_1894530106.html
+* R3 ... 10kOhm variable resistor (actually, it turned out that the two LDR resistances are very similar so that adding a  potentiometer is not necessary)
+* C1 ... 0.1µF ceramic capacitor for noise reduction
+* R4 ... 10kOhm pullup resistor
+* C2, C3 ... 22pF ceramic capacitors for crystal oscillator
+* C4, C5 ... 0.1µF ceramic capacitor for noise reduction
+* 8MHz crystal oscillator
+* HC-12 RF tranceiver module https://statics3.seeedstudio.com/assets/file/bazaar/product/HC-12_english_datasheets.pdf
 
 ## Receiver
 The receiver module uses another HC-12 module to detect the signals sent from the sensor-transmitter.
