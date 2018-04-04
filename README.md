@@ -2,7 +2,7 @@
 
 Short story:
 
-1. Detection of a flashing light signal from an intercom button (without the need of opening and/or changing the wiring of the intercom)
+1. Detection of a flashing light signal coming from an intercom button (without opening and/or changing the wiring of the intercom)
 2. Wireless transmission of the signal to another portable device (receiver)
 3. Low power consumption: both sensor-transmitter (implemented in one device) and receiver should run for several months on batteries
 4. Ability to send and receive the signal across the whole apartment
