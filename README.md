@@ -103,3 +103,7 @@ Parts list:
 
 ## Power Source
 I used 3 serially-connected high-capacity AA rechargeable batteries as power source for both the sensor-transmitter and the receiver. This gives a voltage of approx. 3.6V and a capacity of 7500mAh. With the receiver drawing roughly 90-200µA in idle mode, this battery pack has more than enough energy to run the receiver for months. The power consumption of the sensor-transmitter is a bit harder to estimate.
+
+## Photos
+Receiver open:
+[[https://github.com/RobertRol/IntercomLightSensor/blob/master/receiver400px.png|alt=ReceiverOpen]]
