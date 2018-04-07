@@ -34,7 +34,8 @@ const unsigned long hc12setLowTime=50;
 const unsigned long hc12cmdTime=100;
 
 // software serial interface to HC-12 module
-// the datasheet for the HC12 module can be found here: https://statics3.seeedstudio.com/assets/file/bazaar/product/HC-12_english_datasheets.pdf
+// the datasheet for the HC12 module can be found here:
+// https://statics3.seeedstudio.com/assets/file/bazaar/product/HC-12_english_datasheets.pdf
 SoftwareSerial HC12(hc12TxPin,hc12RxPin);
 
 // watchdog intervals
