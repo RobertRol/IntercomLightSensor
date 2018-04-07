@@ -20,6 +20,7 @@ The easiest solution would have been to open my intercom device, find the wires 
 3. [Transmitter](#transmitter)
 4. [Receiver](#receiver)
 5. [Power Source](#power-source)
+5. [Photos](#photos)
 
 Sections Sensor, Transmitter and Receiver include rudimentary parts lists.
 Sections Transmitter and Receiver also include links to the respective sketchbook code.
