@@ -31,7 +31,8 @@ const int iPin=1;
 volatile boolean canSleep=true;
 
 // software serial interface to HC12 module
-// the datasheet for the HC12 module can be found here: https://statics3.seeedstudio.com/assets/file/bazaar/product/HC-12_english_datasheets.pdf
+// the datasheet for the HC12 module can be found here:
+// https://statics3.seeedstudio.com/assets/file/bazaar/product/HC-12_english_datasheets.pdf
 SoftwareSerial HC12(hc12TxPin,hc12RxPin);
 
 // buffer variable
