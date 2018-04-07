@@ -109,6 +109,6 @@ I used 3 serially-connected high-capacity AA rechargeable batteries as power sou
 |:--:| :--:| 
 | *Opened Receiver* | *Closed and flashing Receiver* |
 
-| [SensorTransmitter open](https://github.com/RobertRol/IntercomLightSensor/blob/master/sensorTransmitter400px.png) | !![SensorTransmitter side](https://github.com/RobertRol/IntercomLightSensor/blob/master/sensorTransmitterSide400px.png) |
+| ![SensorTransmitter open](https://github.com/RobertRol/IntercomLightSensor/blob/master/sensorTransmitter400px.png) | ![SensorTransmitter side](https://github.com/RobertRol/IntercomLightSensor/blob/master/sensorTransmitterSide400px.png) |
 |:--:| :--:| 
 | *Opened Sensor-Transmitter* | *Closed Sensor-Transmitter (focus on LDRs)* |
