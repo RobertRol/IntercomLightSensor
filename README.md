@@ -106,6 +106,7 @@ I used 3 serially-connected high-capacity AA rechargeable batteries as power sou
 
 ## Photos
 ![Receiver open](https://github.com/RobertRol/IntercomLightSensor/blob/master/receiver400px.png)
+*Open Receiver*
 ![Receiver closed](https://github.com/RobertRol/IntercomLightSensor/blob/master/receiverClosed400px.png)
 ![Receiver flashing](https://github.com/RobertRol/IntercomLightSensor/blob/master/receiverFlashing400px.png)
 ![SensorTransmitter open](https://github.com/RobertRol/IntercomLightSensor/blob/master/sensorTransmitter400px.png)
