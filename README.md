@@ -21,6 +21,9 @@ The easiest solution would have been to open my intercom device, find the wires 
 4. [Receiver](#receiver)
 5. [Power Source](#power-source)
 
+Sections Sensor, Transmitter and Receiver include rudimentary parts lists.
+Sections Transmitter and Receiver also include links to the respective sketchbook code.
+
 ## Links
 The low power objective turned out to be really tricky. However, the website https://www.gammon.com.au/power was incredibly helpful, especially the part about the low-power temperature monitor.
 My main take-aways from this website were that
