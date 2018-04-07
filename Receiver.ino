@@ -16,9 +16,9 @@ const int ledFlashRepeat=5;
 const int ledFlashInterval=200;
 
 // HC-12 pins (do NOT use digital pins 0 and 1 since they are used by the serial interface)
-const int hc12RxPin=12;
-const int hc12TxPin=11;
-const int hc12SetPin=13;
+const int hc12RxPin=13;
+const int hc12TxPin=12;
+const int hc12SetPin=11;
 
 // handle interrupt via HC12 module (pin D3); this pin number will be used in pinMode
 const int interruptPin=3;
