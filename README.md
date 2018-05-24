@@ -55,6 +55,7 @@ Parts list:
 * C1 standard 0.1µF ceramic capacitor for noise reduction
 
 ## Transmitter
+[Link](https://github.com/RobertRol/IntercomLightSensor/blob/master/SensorTransmitter.ino) to code.
 Wireless transmission of the light-triggered signal is performed via an HC-12 tranceiver module. While its transmission range turned out to be much better than for the cheaper Arduino RF modules, it's still not good enough to receive the signal everywhere in my apartment. However, it works if I leave the boxes with the sensor-transmitter and receiver electronics open.
 
 Important note about digital pins 0 and 1 of the ATmega328P-PU and the SoftwareSerial library: It seems as if you cannot use them as RX/TX pins when setting up a SoftwareSerial object, see http://forum.arduino.cc/index.php?topic=412164.0. At least I did not manage to get the RF communication working when using pins 0 and 1.
