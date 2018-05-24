@@ -56,6 +56,7 @@ Parts list:
 
 ## Transmitter
 [Link](https://github.com/RobertRol/IntercomLightSensor/blob/master/SensorTransmitter.ino) to code.
+
 Wireless transmission of the light-triggered signal is performed via an HC-12 tranceiver module. While its transmission range turned out to be much better than for the cheaper Arduino RF modules, it's still not good enough to receive the signal everywhere in my apartment. However, it works if I leave the boxes with the sensor-transmitter and receiver electronics open.
 
 Important note about digital pins 0 and 1 of the ATmega328P-PU and the SoftwareSerial library: It seems as if you cannot use them as RX/TX pins when setting up a SoftwareSerial object, see http://forum.arduino.cc/index.php?topic=412164.0. At least I did not manage to get the RF communication working when using pins 0 and 1.
@@ -86,6 +87,8 @@ Parts list:
 * HC-12 RF tranceiver module https://statics3.seeedstudio.com/assets/file/bazaar/product/HC-12_english_datasheets.pdf
 
 ## Receiver
+[Link](https://github.com/RobertRol/IntercomLightSensor/blob/master/Receiver.ino) to code.
+
 The receiver module uses another HC-12 module to detect the signals sent from the sensor-transmitter.
 
 1. In order to save energy, the microprocessor of the receiver is put into `SLEEP_MODE_PWR_DOWN`. The HC-12 module is also put into power saving mode `AT+FU2`, where it draws about 90µA.
