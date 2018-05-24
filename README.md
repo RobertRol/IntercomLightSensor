@@ -8,6 +8,8 @@ Short story:
 4. Ability to send and receive the signal across the whole apartment
 5. Implementation via microcontrollers since I wanted to play around with my Arduino board
 
+Click [here for the long story](#long-story).
+
 ![Solution](https://github.com/RobertRol/IntercomLightSensor/blob/master/pics/DesignSmall.png)
 
 ## Overview
