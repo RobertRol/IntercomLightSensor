@@ -105,7 +105,7 @@ I used 3 serially-connected high-capacity AA rechargeable batteries as power sou
 ## Photos
 | ![SensorTransmitter open](https://github.com/RobertRol/IntercomLightSensor/blob/master/pics/sensorTransmitter400px.png) | ![Receiver open](https://github.com/RobertRol/IntercomLightSensor/blob/master/pics/receiver400px.png) |
 |:--:| :--:| 
-| *Receiver (open)* | *Sensor-Transmitter (open)* |
+| *Sensor-Transmitter (open)* | *Receiver (open)* |
 
 
 ## Long story
