@@ -7,6 +7,8 @@ Short story:
 3. Low power consumption: both sensor-transmitter (implemented in one device) and receiver should run for several months on batteries
 4. Receive the signal anywhere in the apartment
 
+... basically, it's something like a portable "repeater" for light signals.
+
 Click [here for the long story](#long-story).
 
 ![Solution](https://github.com/RobertRol/IntercomLightSensor/blob/master/pics/DesignSmall.png)
