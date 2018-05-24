@@ -10,12 +10,6 @@ Short story:
 
 ![Solution](https://github.com/RobertRol/IntercomLightSensor/blob/master/pics/DesignSmall.png)
 
-Long story:
-
-Working at home comes with several advantages. One of them is that I am usually around when I am expecting a package from a parcel service. However, since I like to listen to music while coding, I cannot hear the doorbell/intercom when my orders arrive at home. Here in Germany, the parcel services sometimes drop the package for pick-up at the local post office in case you are not opening the door. Riding my bike, it takes me about 15mins to get to the post office. Not to mention the long waiting line there...
-So I decided to design a small device that detects when someone is using the intercom and that triggers a visual notification that can be seen while I am sitting in front of my computer.
-The easiest solution would have been to open my intercom device, find the wires that go to the buzzer and to use this as an interrupt. However, I am renting my place and --cautious as I am-- potentially damaging the intercom was too risky for me. ;) Apart from the acoustic signal from the buzzer, my intercom also flashes a light when someone rings. So, I decided to detect this light signal and to transmit it _wirelessly_ to a small receiver that is just underneath my computer monitors.
-
 ## Overview
 1. [Links](#links)
 2. [Sensor](#sensor)
@@ -23,6 +17,7 @@ The easiest solution would have been to open my intercom device, find the wires 
 4. [Receiver](#receiver)
 5. [Power Source](#power-source)
 5. [Photos](#photos)
+5. [Long Story](#long-story)
 
 Sections Sensor, Transmitter and Receiver include rudimentary parts lists.
 Sections Transmitter and Receiver also include links to the respective sketchbook code.
@@ -111,3 +106,9 @@ I used 3 serially-connected high-capacity AA rechargeable batteries as power sou
 | ![Receiver open](https://github.com/RobertRol/IntercomLightSensor/blob/master/pics/receiver400px.png) | ![SensorTransmitter open](https://github.com/RobertRol/IntercomLightSensor/blob/master/pics/sensorTransmitter400px.png) |
 |:--:| :--:| 
 | *Receiver (open)* | *Sensor-Transmitter (open)* |
+
+
+## Long story
+Working at home comes with several advantages. One of them is that I am usually around when I am expecting a package from a parcel service. However, since I like to listen to music while coding, I cannot hear the doorbell/intercom when my orders arrive at home. Here in Germany, the parcel services sometimes drop the package for pick-up at the local post office in case you are not opening the door. Riding my bike, it takes me about 15mins to get to the post office. Not to mention the long waiting line there...
+So I decided to design a small device that detects when someone is using the intercom and that triggers a visual notification that can be seen while I am sitting in front of my computer.
+The easiest solution would have been to open my intercom device, find the wires that go to the buzzer and to use this as an interrupt. However, I am renting my place and --cautious as I am-- potentially damaging the intercom was too risky for me. ;) Apart from the acoustic signal from the buzzer, my intercom also flashes a light when someone rings. So, I decided to detect this light signal and to transmit it _wirelessly_ to a small receiver that is just underneath my computer monitors.
