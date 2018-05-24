@@ -8,6 +8,8 @@ Short story:
 4. Ability to send and receive the signal across the whole apartment
 5. Implementation via microcontrollers since I wanted to play around with my Arduino board
 
+![Solution](https://github.com/RobertRol/IntercomLightSensor/blob/master/pics/DesignSmall.png)
+
 Long story:
 
 Working at home comes with several advantages. One of them is that I am usually around when I am expecting a package from a parcel service. However, since I like to listen to music while coding, I cannot hear the doorbell/intercom when my orders arrive at home. Here in Germany, the parcel services sometimes drop the package for pick-up at the local post office in case you are not opening the door. Riding my bike, it takes me about 15mins to get to the post office. Not to mention the long waiting line there...
@@ -106,10 +108,6 @@ Parts list:
 I used 3 serially-connected high-capacity AA rechargeable batteries as power source for both the sensor-transmitter and the receiver. This gives a voltage of approx. 3.6V and a capacity of 7500mAh. With the receiver drawing roughly 90-200µA in idle mode, this battery pack has more than enough energy to run the receiver for months. The power consumption of the sensor-transmitter is a bit harder to estimate.
 
 ## Photos
-| ![Receiver open](https://github.com/RobertRol/IntercomLightSensor/blob/master/pics/receiver400px.png) | ![Receiver closed](https://github.com/RobertRol/IntercomLightSensor/blob/master/pics/receiverFlashing400px.png) |
+| ![Receiver open](https://github.com/RobertRol/IntercomLightSensor/blob/master/pics/receiver400px.png) | ![SensorTransmitter open](https://github.com/RobertRol/IntercomLightSensor/blob/master/pics/sensorTransmitter400px.png) |
 |:--:| :--:| 
-| *Opened Receiver* | *Closed and flashing Receiver* |
-
-| ![SensorTransmitter open](https://github.com/RobertRol/IntercomLightSensor/blob/master/pics/sensorTransmitter400px.png) | ![SensorTransmitter side](https://github.com/RobertRol/IntercomLightSensor/blob/master/pics/sensorTransmitterSide400px.png) |
-|:--:| :--:| 
-| *Opened Sensor-Transmitter* | *Mounted Sensor-Transmitter (focus on LDRs)* |
+| *Receiver (open)* | *Sensor-Transmitter (open)* |
