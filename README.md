@@ -91,7 +91,7 @@ Parts list:
 
 The receiver module uses another HC-12 module to detect the signals sent from the sensor-transmitter.
 
-1. In order to save energy, the microprocessor of the receiver is put into `SLEEP_MODE_PWR_DOWN`. The HC-12 module is also put into power saving mode `AT+FU2`, where it draws about 90µA.
+1. In order to save energy, the microprocessor of the receiver is put into `SLEEP_MODE_PWR_DOWN`. The HC-12 module is also put into power saving mode `AT+FU2`, where it draws about 90µA. https://github.com/RobertRol/IntercomLightSensor/blob/9bb926a1fe57b7f33a354ca0fcd7240394cc727c/Receiver.ino#L168
 2. I have noticed that upon incoming RF signals, the HC-12 module changes the voltage on its TXD pin. This voltage change can be used to wake up the ATmega microprocessor via an hardware interrupt. Information on how to use interrupts can be found here: https://www.arduino.cc/reference/en/language/functions/external-interrupts/attachinterrupt/
 3. After the ATmega microprocessor is woken up, it flashes a small 3x2 LED array for a few times.
 4. Finally, the ATmega328P-PU is put back into mode `SLEEP_MODE_PWR_DOWN`.
