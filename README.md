@@ -21,8 +21,8 @@ Click [here for the long story](#long-story).
 5. [Photos](#photos)
 5. [Long Story](#long-story)
 
-Sections Sensor, Transmitter and Receiver include rudimentary parts lists.
-Sections Transmitter and Receiver also include links to the respective sketchbook code.
+Sections [Sensor](#sensor), [Transmitter](#transmitter) and [Receiver](#receiver) include rudimentary parts lists.
+Sections [Transmitter](#transmitter) and [Receiver](#receiver) also include links to the respective sketchbook code.
 
 ## Links
 The low power objective turned out to be really tricky. However, the website https://www.gammon.com.au/power was incredibly helpful, especially the part about the low-power temperature monitor.
