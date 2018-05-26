@@ -44,7 +44,7 @@ The ATmega328P-PU pin layout is given here: https://www.arduino.cc/en/Hacking/Pi
 
 ## Sensor
 The main part of the sensor is a voltage divider composed of two light-dependent resistors (LDRs). One of the LDRs is placed right in front of the intercom light ("intercom LDR"), the other one a bit away from it ("ambient LDR"). The voltage drop across the ambient LDR is then used as an input to `analogRead` in the [sensor-transmitter code](https://github.com/RobertRol/IntercomLightSensor/blob/master/SensorTransmitter.ino).
-The reason for using two LDRs is that the sensor reading should not depend on the ambient light level. By using a voltage divider with a second (ambient) LDR, the sensor only measures the difference between intercom light and ambient light level.
+The reason for using two LDRs is that the sensor reading should not depend on the ambient light level, i.e., the sensor needs to work during the day and at night. By using a voltage divider with a second (ambient) LDR, the sensor only measures the difference between intercom light and ambient light level.
 
 Since the sensor is always "on" in my design, it was important to use LDRs with a high resistance in order to minimize power drain. I used two 12mm GL12537 LDRs, which have about 40kOhm/4kOhm in dark/bright state, respectively. Additionally, I have added another 0-10kOhm potentiometer to adjust for any differences in resistance between the two LDRs.
 
@@ -58,7 +58,7 @@ Parts list:
 ## Transmitter
 [Link](https://github.com/RobertRol/IntercomLightSensor/blob/master/SensorTransmitter.ino) to code.
 
-Wireless transmission of the light-triggered signal is performed via an HC-12 transceiver module. While its transmission range turned out to be much better than the ones of cheaper Arduino RF modules, it's still not good enough to receive the signal everywhere in my apartment. However, after cutting out holes right in front of the transceiver antennas, I get a pretty good coverage.
+Wireless transmission of the light-triggered signal is performed via an HC-12 transceiver module. While its transmission range turned out to be much better than the ones of cheaper Arduino RF modules, it's still not good enough to receive the signal everywhere in my apartment. However, after cutting holes into the lids right in front of the transceiver antennas (see photos in section [Objectives](#objectives)), I get a pretty good coverage throughout my apartment.
 
 Important note about digital pins 0 and 1 of the ATmega328P-PU and the SoftwareSerial library: It seems as if you cannot use them as RX/TX pins when setting up a SoftwareSerial object, see http://forum.arduino.cc/index.php?topic=412164.0. At least I did not manage to get the RF communication working when using pins 0 and 1.
 
