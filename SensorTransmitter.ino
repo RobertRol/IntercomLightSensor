@@ -3,7 +3,6 @@
 #include <SoftwareSerial.h>
 
 // toggle debug output via I2C
-// I keep debugging on
 #define DEBUGGING true
 
 #if DEBUGGING
@@ -11,7 +10,7 @@
   #include <Wire.h>
 #endif
 
-// how many samples of LDR reading
+// number of LDR measurements
 const int readingSamples=5;
 
 // HC-12 pins (do NOT use digital pins 0 and 1 since they are used by the serial interface)
@@ -19,28 +18,28 @@ const int hc12RxPin=2;
 const int hc12TxPin=3;
 const int hc12SetPin=4;
 
-// sending message 2 times with a delay of 2000msec
+// repeat RF signal 2 times with a delay of 2000msec
 const int messageRepeat=2;
 const int messageRepeatWait=2000;
 
-// oldLightLevel is used to store light level for comparison in next iteration
+// oldLightLevel is the light level from the previous sleep-wake iteration
 int oldLightLevel=500;
-// different pre-defined light levels (threshold; see below)
+// an RF signal will be sent if the new light level is above/below oldLightLevel+/-lightDelta
 const int lightDelta=3;
 
-// these values are taken from the HC12 documentation v2 (+10ms for safety)
+// these values are taken from the HC-12 documentation v2 (+10ms for safety)
 const unsigned long hc12setHighTime=90;
 const unsigned long hc12setLowTime=50;
 const unsigned long hc12cmdTime=100;
 
-// software serial interface to HC-12 module
-// the datasheet for the HC12 module can be found here:
+// SoftwareSerial interface to HC-12 module
+// the datasheet for the HC-12 module can be found here:
 // https://statics3.seeedstudio.com/assets/file/bazaar/product/HC-12_english_datasheets.pdf
 SoftwareSerial HC12(hc12TxPin,hc12RxPin);
 
+// most of the watchdog-timer and sleep-mode related code/comments taken from https://www.gammon.com.au/power
 // watchdog intervals
 // sleep bit patterns for WDTCSR
-// most of the watchdog-timer and sleep-mode related code taken from https://www.gammon.com.au/power
 enum {
   WDT_16_MS  =  0b000000,
   WDT_32_MS  =  0b000001,
@@ -62,7 +61,7 @@ ISR (WDT_vect) {
  
 #if DEBUGGING
   // send data over I2C to other board
-  // information on how to use the wire library can be found here: https://www.arduino.cc/en/Reference/Wire
+  // wire library info can be found here: https://www.arduino.cc/en/Reference/Wire
   void wireSend(char dataDescr[], const char data[]="") {
     Wire.beginTransmission(8);
     Wire.write(dataDescr);
@@ -84,7 +83,7 @@ ISR (WDT_vect) {
 #endif
 
 // send an AT command to the HC12 module
-// AT commands can be used to change the configuration of the HC12 module
+// AT commands can be used to change the configuration of the HC-12 module
 void sendCmd(const char cmd[]) {
   #if DEBUGGING
     wireSend("Sending Cmd:",cmd);
@@ -106,7 +105,7 @@ void sendCmd(const char cmd[]) {
   delay(hc12setHighTime);
 }
 
-// put HC12 module into sleep mode
+// put HC-12 module into sleep mode
 void HC12Sleep() {
   #if DEBUGGING
     wireSend("Setting HC12 to sleep");
@@ -122,7 +121,7 @@ void HC12Sleep() {
   delay(hc12setHighTime);
 }
 
-// wake HC12 module from sleep mode
+// wake HC-12 module from sleep mode
 void HC12Wake() {
   #if DEBUGGING
     wireSend("Waking up HC12");
@@ -134,10 +133,10 @@ void HC12Wake() {
   delay(250);
 }
 
-// send data via software serial
+// send data via SoftwareSerial
 void ssSend(const char *lightLevelChar, const char *oldLightLevelChar) {
   #if DEBUGGING
-    // in debugging mode, information about the light levels is included
+    // information about the light levels is included in debugging mode
     HC12.print("|r");
     HC12.print("-");
     HC12.print(lightLevelChar);
@@ -149,7 +148,7 @@ void ssSend(const char *lightLevelChar, const char *oldLightLevelChar) {
 }
 
 void doSleep (const byte interval) {
-  // see https://www.gammon.com.au/power
+  // code and comments in this function body taken from https://www.gammon.com.au/power
   // clear various "reset" flags
   MCUSR = 0;     
   // allow changes, disable reset
@@ -225,14 +224,14 @@ boolean takeReading () {
   if (lightLevel>oldLightLevel+lightDelta) {
     // first wake HC12 module
     HC12Wake();
-    // repeat signal
+    // repeat RF signal
     for (int i=0;i<messageRepeat;++i) {
-      // software serial send via HC12 module
+      // send data via HC-12 module
       ssSend(lightLevelChar,oldLightLevelChar);
       delay(messageRepeatWait);
     }
     delay(100);
-    //put HC12 module back to sleep
+    //put HC-12 module back to sleep
     HC12Sleep();
     
     #if DEBUGGING
@@ -249,7 +248,7 @@ boolean takeReading () {
  
 void setup (void) {
   // important! set to EXTERNAL if voltage source is connected to AREF pin
-  // otherwise microcontroller might be damaged
+  // otherwise microcontroller might get damaged
   analogReference(EXTERNAL);
   analogRead(0);
   
@@ -263,7 +262,7 @@ void setup (void) {
   pinMode(hc12SetPin, OUTPUT);
   delay(200);
   
-  // Open serial port to HC12
+  // Serial connection to HC-12
   // set this to twice the BAUD rate that gets reported by sending "AT+RX" to the HC-12 module
   // I don't know why it has to be twice this BAUD rate but setting it to other values did not work
   HC12.begin(2400);
@@ -272,20 +271,20 @@ void setup (void) {
     // I2C to other board
     Wire.begin();
     delay(200);
-    // print configuration of HC-12 module
+    // print configuration of the HC-12 module
     sendCmd("AT+RX");
   #endif
   
-  // actually, only need to set that once since HC12 remembers settings
+  // actually, one only needs to set the power mode of the HC-12 module once since it remembers settings
   // I left it in the setup anyway
-  // AT+FU2 is the power saving mode of the HC12 module
+  // AT+FU2 is the power saving mode of the HC-12 module
   sendCmd("AT+FU2");
   delay(1000);
   // high power transmission mode
   sendCmd("AT+P8");
   delay(1000);
   
-  // put HC12 module into sleep mode
+  // put HC-12 module into sleep mode
   HC12Sleep();
   delay(100);
 }
