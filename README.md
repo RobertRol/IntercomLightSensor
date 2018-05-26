@@ -60,7 +60,7 @@ Parts list:
 
 Wireless transmission of the light-triggered signal is performed via an HC-12 transceiver module. While its transmission range turned out to be much better than the ones of cheaper Arduino RF modules, it's still not good enough to receive the signal everywhere in my apartment. However, after cutting holes into the lids right in front of the transceiver antennas (see photos in section [Objectives](#objectives)), I get a pretty good coverage throughout my apartment.
 
-Important note about digital pins 0 and 1 of the ATmega328P-PU and the SoftwareSerial library: It seems as if you cannot use them as RX/TX pins when setting up a SoftwareSerial object, see http://forum.arduino.cc/index.php?topic=412164.0. At least I did not manage to get the RF communication working when using pins 0 and 1.
+Important note about digital pins 0 and 1 of the ATmega328P-PU and the SoftwareSerial library: It seems as if you cannot use them as RX/TX pins when setting up a `SoftwareSerial` object, see http://forum.arduino.cc/index.php?topic=412164.0. At least I did not manage to get the RF communication working when using pins 0 and 1.
 
 Another important note: If the `AREF` pin is connected to an external voltage source, the source code must include the line
 ```C
