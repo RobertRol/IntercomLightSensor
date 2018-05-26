@@ -66,7 +66,7 @@ Another important note: If the `AREF` pin is connected to an external voltage so
 ```C
 analogReference(EXTERNAL);
 ```
-Otherwise, the microcontroller might be damaged!
+Otherwise, the microcontroller might get damaged!
 
 In a nutshell, the sensor-transmitter code performs the following steps:
 
