@@ -18,7 +18,7 @@ Click [here for the long story](#long-story).
 2. [Sensor](#sensor)
 3. [Transmitter](#transmitter)
 4. [Receiver](#receiver)
-5. [Power Source](#power-source)
+5. [Power Source and Consumption](#power-source-and-consumption)
 5. [Photos](#photos)
 5. [Long Story](#long-story)
 
@@ -92,8 +92,8 @@ Parts list:
 
 The receiver module uses another HC-12 module to detect the signals from the sensor-transmitter.
 
-1. In order to save energy, the microprocessor of the receiver is put into `SLEEP_MODE_PWR_DOWN`. The HC-12 module is also put into power saving mode `AT+FU2`, where it draws about 90µA (not to be confused with sleep mode).
-2. I have noticed that upon incoming RF signals, the HC-12 module changes the voltage on its TXD pin. This voltage change can be used to wake up the ATmega microprocessor via an hardware interrupt (see the connection of the TXD pin to pin X of the ATmega below). Information on how to use interrupts can be found [here]( https://www.arduino.cc/reference/en/language/functions/external-interrupts/attachinterrupt/).
+1. In order to save energy, the microprocessor of the receiver is put into `SLEEP_MODE_PWR_DOWN`. The HC-12 module is also put into power saving mode `AT+FU2`, where it draws about 80-90µA (not to be confused with sleep mode).
+2. I have noticed that upon incoming RF signals, the HC-12 module changes the voltage on its TXD pin. This voltage change can be used to wake up the ATmega microprocessor via an hardware interrupt (see the connection of the TXD pin to pin `D3` of the ATmega below). Information on how to use interrupts can be found [here]( https://www.arduino.cc/reference/en/language/functions/external-interrupts/attachinterrupt/).
 3. After the ATmega microprocessor is woken up, it flashes a small 3x2 LED array for a few times.
 4. Finally, the ATmega328P-PU is put back into mode `SLEEP_MODE_PWR_DOWN`.
 
@@ -106,10 +106,20 @@ Parts list:
 * R1-R6, 220 Ohm resistors for the LEDs
 * L1-L6, red LEDs
 
-## Power Source
-I use 3 serially-connected high-capacity AA rechargeable batteries as power source for both the sensor-transmitter and the receiver. This gives a voltage of approx. 3.6V and a capacity of 7500mAh. With the receiver drawing roughly 90-200µA in idle mode, this battery pack has more than enough energy to run the device for months.
+## Power Source and Consumption
+### Receiver
+I use 3 serially-connected high-capacity AA rechargeable batteries as power source for both the sensor-transmitter and the receiver. This gives a voltage of approx. 3x1.2V=3.6V and a capacity of 3x2400mAh=7200mAh. With the receiver drawing roughly 90-200µA in idle mode, a 3xAA battery pack has more than enough energy to run the device for months.
 
-The power consumption of the sensor-transmitter.
+### Sensor-Transmitter
+The power consumption of the sensor-transmitter can be calculated. The microcontroller is woken up from state `SLEEP_MODE_PWR_DOWN` every 256ms. According to https://www.gammon.com.au/power, the ATmega328P-PU draws approximately 0.36mA in `SLEEP_MODE_PWR_DOWN`. The HC-12 module needs another 22µA in sleep mode.
+The sensor takes 5 `analogRead` measurements of the voltage drop across the ambient LDR, where each reading takes about 100µs (see [link](https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/)). I have added another 1ms delay between the readings via `delay(1)`. The total time of the reading is roughly 5.5ms (let's make it 6ms). While taking the measurements, the bare ATmega328P-PU board needs about 15mA and the HC-12 module draws 80-90µA (being in mode `AT +FU2`).
+
+The average current drain is therefore
+```math
+1/256ms *[(256ms-6ms)*(0.38mA+0.022mA) + 6ms*(15mA+0.09mA)] ~ 0.75mA
+```
+With a capacity of 7200mAh this gives an approximate run time of 400 days for a 3xAA battery pack.
+This calculation does not take into account the energy needed to send RF signals. However, it does not happen very often that someone uses the intercom and can therefore be neglected. The same holds for the receiver module and the flashing LEDs.
 
 ## Photos
 | ![SensorTransmitter open](https://github.com/RobertRol/IntercomLightSensor/blob/master/pics/sensorTransmitter400px.png) | ![Receiver open](https://github.com/RobertRol/IntercomLightSensor/blob/master/pics/receiver400px.png) |
