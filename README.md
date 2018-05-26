@@ -58,7 +58,7 @@ Parts list:
 ## Transmitter
 [Link](https://github.com/RobertRol/IntercomLightSensor/blob/master/SensorTransmitter.ino) to code.
 
-Wireless transmission of the light-triggered signal is performed via an HC-12 transceiver module. While its transmission range turned out to be much better than the one of cheaper Arduino RF modules, it's still not good enough to receive the signal everywhere in my apartment. However, after cutting out holes right in front of the transceiver antennas, I get a pretty good coverage.
+Wireless transmission of the light-triggered signal is performed via an HC-12 transceiver module. While its transmission range turned out to be much better than the ones of cheaper Arduino RF modules, it's still not good enough to receive the signal everywhere in my apartment. However, after cutting out holes right in front of the transceiver antennas, I get a pretty good coverage.
 
 Important note about digital pins 0 and 1 of the ATmega328P-PU and the SoftwareSerial library: It seems as if you cannot use them as RX/TX pins when setting up a SoftwareSerial object, see http://forum.arduino.cc/index.php?topic=412164.0. At least I did not manage to get the RF communication working when using pins 0 and 1.
 
@@ -108,18 +108,18 @@ Parts list:
 
 ## Power Source and Consumption
 ### Receiver
-I use 3 serially-connected high-capacity AA rechargeable batteries as power source for both the sensor-transmitter and the receiver. This gives a voltage of approx. 3x1.2V=3.6V and a capacity of 3x2400mAh=7200mAh. With the receiver drawing roughly 90-200µA in idle mode, a 3xAA battery pack has more than enough energy to run the device for months.
+I use 3 serially-connected high-capacity AA rechargeable batteries as power source for both the sensor-transmitter and the receiver. This gives a voltage of approx. `3 x 1.2V = 3.6V` and a capacity of `3 x 2400mAh = 7200mAh`. With the receiver drawing roughly 90-200µA in idle mode, a 3xAA battery pack has more than enough energy to run the device for months.
 
 ### Sensor-Transmitter
 The power consumption of the sensor-transmitter can be calculated. The microcontroller is woken up from state `SLEEP_MODE_PWR_DOWN` every 256ms. According to https://www.gammon.com.au/power, the ATmega328P-PU draws approximately 0.36mA in `SLEEP_MODE_PWR_DOWN`. The HC-12 module needs another 22µA in sleep mode.
-The sensor takes 5 `analogRead` measurements of the voltage drop across the ambient LDR, where each reading takes about 100µs (see [link](https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/)). I have added another 1ms delay between the readings via `delay(1)`. The total time of the reading is roughly 5.5ms (let's make it 6ms). While taking the measurements, the bare ATmega328P-PU board needs about 15mA and the HC-12 module draws 80-90µA (being in mode `AT +FU2`).
+The sensor takes 5 `analogRead` measurements of the voltage drop across the ambient LDR, where each reading takes about 100µs (see [link](https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/)). I have added another 1ms delay between the readings via `delay(1)`. The total time of the reading is roughly 5.5ms (let's make it 6ms). While taking the measurements, the bare ATmega328P-PU board needs about 15mA and the HC-12 module draws 80-90µA.
 
 The average current drain is therefore
 ```math
 1/256ms *[(256ms-6ms)*(0.38mA+0.022mA) + 6ms*(15mA+0.09mA)] ~ 0.75mA
 ```
 With a capacity of 7200mAh this gives an approximate run time of 400 days for a 3xAA battery pack.
-This calculation does not take into account the energy needed to send RF signals. However, it does not happen very often that someone uses the intercom and can therefore be neglected. The same holds for the receiver module and the flashing LEDs.
+This calculation does not take into account the energy needed to send RF signals. However, it does not happen very often that someone uses the intercom and the energy consumption for transmitting RF signals can therefore be neglected in our calculation. The same holds for the flashing LEDs of the receiver module.
 
 ## Photos
 | ![SensorTransmitter open](https://github.com/RobertRol/IntercomLightSensor/blob/master/pics/sensorTransmitter400px.png) | ![Receiver open](https://github.com/RobertRol/IntercomLightSensor/blob/master/pics/receiver400px.png) |
